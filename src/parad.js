@@ -11,7 +11,7 @@
  * An easy-to-use deployment system with git in mind.
  * 
  * Author: Paradowski Creative (https://www.paradowski.com)
- * License: MIT
+ * License: MIT (https://github.com/ParadowskiCreativeSTL/parad/blob/master/LICENSE)
  */
 
 const cli = require('commander')
