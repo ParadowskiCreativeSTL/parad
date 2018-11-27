@@ -1,0 +1,15 @@
+{
+  "name": "parad",
+  "version": "0.1.0",
+  "description": "An easy-to-use deployment system with git in mind.",
+  "main": "src/parad.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paradowski Creative",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.0"
+  }
+}
