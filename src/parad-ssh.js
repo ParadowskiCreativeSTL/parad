@@ -29,7 +29,7 @@ cli
                         console.log('\nFor your security, I\'ve closed the connection.')
                         break
                     default:
-                        console.log('\nAn unknown error has occurred: ', err.stdout)
+                        console.error('\nAn unknown error has occurred: ', err.stdout)
                 }
             } else if (err.status) {
                 switch (err.status) {
@@ -38,10 +38,10 @@ cli
                     case 130:
                         break
                     case 255:
-                        console.log('\nSSH failed, there may be output above this message. Please try again or adjust your configuration file.')
+                        console.error('\nSSH failed, there may be output above this message. Please try again or adjust your configuration file.')
                         break
                     default:
-                        console.log('\nAn unknown error has occurred: ', err.stdout)
+                        console.error('\nAn unknown error has occurred: ', err.stdout)
                 }
             }
         }
