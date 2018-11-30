@@ -24,8 +24,8 @@ cli
 
                 try {
                     execSync(`rsync -avz ${rc.environments[selected].connectionString}:${destinationPath} ${localPath}`, { stdio: [0, 1, 2] })
-                } catch (err) {
-                    console.error(err)
+                } catch (error) {
+                    console.error(error)
                 }
             })
         } else {
