@@ -22,26 +22,26 @@ cli
         try {
             // For security, timeout after 3 mins
             execSync(`ssh ${rc.environments[selected].connectionString}`, { stdio: [0, 1, 2], timeout: 180000 })
-        } catch (err) {
-            if (err.code) {
-                switch (err.code) {
+        } catch (error) {
+            if (error.code) {
+                switch (error.code) {
                     case 'ETIMEDOUT':
                         console.log('\nFor your security, I\'ve closed the connection.')
                         break
                     default:
-                        console.log('\nAn unknown error has occurred: ', err.stdout)
+                        console.error('\nAn unknown error has occurred: ', error.stdout)
                 }
-            } else if (err.status) {
-                switch (err.status) {
+            } else if (error.status) {
+                switch (error.status) {
                     // We purposely don't want to display an error when ^C is pressed
                     // since we want the user to be able to use that over the ssh connection
                     case 130:
                         break
                     case 255:
-                        console.log('\nSSH failed, there may be output above this message. Please try again or adjust your configuration file.')
+                        console.error('\nSSH failed, there may be output above this message. Please try again or adjust your configuration file.')
                         break
                     default:
-                        console.log('\nAn unknown error has occurred: ', err.stdout)
+                        console.error('\nAn unknown error has occurred: ', error.stdout)
                 }
             }
         }

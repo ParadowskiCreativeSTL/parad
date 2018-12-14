@@ -76,6 +76,13 @@ cli
 
             config.environments[env] = await inquirer.prompt(questions)
         })
+
+        // Convert the assetTrips string into an array
+        Object.keys(config.environments).forEach((env) => {
+            if (config.environments[env].assetTrips) {
+                config.environments[env].assetTrips = config.environments[env].assetTrips.split(' ')
+            }
+        })
         
         await Utils.createRCFile(JSON.stringify(config, null, 4))
         console.log('Your config file has been saved!')
