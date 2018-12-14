@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { execSync } = require('child_process')
 const cli = require('commander')
 const inquirer = require('inquirer')
@@ -16,7 +17,7 @@ cli
                 {
                     name: 'selected',
                     type: 'list',
-                    message: 'Which environment would you like to pull assets from?',
+                    message: 'Which environment would you like to pull the database from?',
                     choices: Object.keys(rc.environments)
                 }
             ])
@@ -33,7 +34,7 @@ cli
         }
 
         // Replace the database
-        if (rc.environments.local.contains('@')) {
+        if (rc.environments.local.connectionString.includes('@')) {
             // If the local connection string is an ssh connection
             try {
                 sshReplaceDb(rc.environments.local)
